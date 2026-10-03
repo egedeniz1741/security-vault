@@ -20,3 +20,7 @@ A containerized Python (FastAPI) microservice protected by an Nginx Reverse Prox
 
 ```bash
 docker compose up --build
+
+Access the API via the Nginx Gateway:
+- `http://localhost:8080/`
+- `http://localhost:8080/user?username=josh`
