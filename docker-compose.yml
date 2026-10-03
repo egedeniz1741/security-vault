@@ -1,0 +1,30 @@
+services:
+  
+  api:
+    build: .
+    environment:
+      - AWS_SECRET_KEY=super_secret_prod_key_from_compose
+    
+    expose:
+      - "8000"
+    networks:
+      - internal_net
+
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      
+      - "8080:80"
+    volumes:
+      
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+    networks:
+      - internal_net
+
+
+networks:
+  internal_net:
+    driver: bridge
