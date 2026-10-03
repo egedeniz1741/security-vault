@@ -33,8 +33,8 @@ def get_user(username: str):
     c = conn.cursor()
 
     
-    query =f"SELECT * FROM users WHERE username = '{username}'"
-    c.execute(query)
+    query = "SELECT * FROM users WHERE username = ?"
+    c.execute(query, (username,))
     result = c.fetchall()
     conn.close()
 
